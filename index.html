@@ -1,0 +1,51 @@
+<button>start</button>
+<script>
+    
+    function start(afterEveryTimeInMinutes) {
+        function getCurrentMinutes() {
+            return (new Date()).getMinutes();
+        }
+        let actionTaken = false;
+        setInterval(
+            function checkTime() {
+                if ((getCurrentMinutes() % afterEveryTimeInMinutes === 0 ) && (actionTaken === false)) {
+                    (new Audio('bell.mp3')).play();
+                    actionTaken = true;    
+                    setTimeout(function setActionTakenToTrue() {
+                        actionTaken = false;
+                    }, 1 * 60 * 1000 );
+                }
+            },
+            1
+        );
+    }
+    // IF YOU WANT TO CHANGE IN CODE -> THEN 1.closure 2.eventLoop become critical
+    start(15);
+
+    // let date = new Date();
+    // let currentMinute = date.getMinutes();
+    // let conversionFactor = 60 * 1000;
+
+
+    // // every __ minutes (in milliseconds)
+    // let afterEveryTimeInMinutes = 2;
+    // let afterEveryTimeInMilliseconds = afterEveryTimeInMinutes * conversionFactor;
+    // // figure out time remainingTime
+    // let remainingTimeInMinutes = afterEveryTimeInMinutes - currentMinute % afterEveryTimeInMinutes;
+    // let remainingTimeInMilliseconds = remainingTimeInMinutes * conversionFactor;
+    // setTimeout(
+    //     function hitAlarmRemainingTime() {
+    //         alert("Hit It");
+    //         setInterval(
+    //             function hitAlarmEveryTime() {
+    //                 alert("HitIt");
+    //             }, 
+    //             afterEveryTimeInMilliseconds
+    //         )
+    //     },
+    //     remainingTimeInMilliseconds 
+    // );
+
+    
+
+</script>
